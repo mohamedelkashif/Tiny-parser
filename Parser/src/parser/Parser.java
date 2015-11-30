@@ -29,28 +29,43 @@ public class Parser {
             String q;
             match(";");
             q=stmt();
-//            if(q!=null)
-//            {
-//                if(t==null)
-//                    t=p=q;
-//                else
-//                {
-//                    p=q;
-//                }
-//            }
+            if(q!=null)
+            {
+                if(t==null)
+                    t=p=q;
+                else
+                {
+                    p=q;
+                }
+            }
         }
         return t;
     }
 
     
-    static public String match(String x)
+    static public void match(String expected)
     {
-        return null;
+        if(token == expected) token = "read identifier";
+        else
+        {
+            System.out.println("Error");
+        }
+        
         
     }
    static public String stmt()
     {
-        return null;
+        String t = null;
+        switch(token)
+        {
+            case "IF" :t=if_stmt();break;
+            case "Repeat" : t= repeat_stmt();break;
+            case "id" : t= assign_stmt();break;
+            case "read" : t=read_stmt();break;
+            case "write" : t=write_stmt();break;
+            default: System.out.println("Error");
+        }
+        return t;
     }
    static public String if_stmt()
     {
