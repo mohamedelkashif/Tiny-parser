@@ -92,7 +92,9 @@ public class Parser {
     }
    static public String assign_stmt()
     {
-        
+        match("identifier");
+        match("assign");
+        exp();
         return null;
     }
    static public String read_stmt()
