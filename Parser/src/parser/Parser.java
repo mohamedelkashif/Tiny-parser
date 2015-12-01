@@ -17,7 +17,7 @@ import static jdk.nashorn.internal.parser.TokenType.EQ;
 
 /**
  *
- * @author Mohamed
+ * @author Mohamed Elkashif
  */
 public class Parser {
     static String token;
