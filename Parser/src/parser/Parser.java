@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import jdk.nashorn.internal.parser.TokenType;
 import static jdk.nashorn.internal.parser.TokenType.EQ;
 
+
 /**
  *
  * @author Mohamed
@@ -69,10 +70,21 @@ public class Parser {
     }
    static public String if_stmt()
     {
+        match("if");
+        exp();
+        match("then");
+        stmt_seq();
+        if(token == "ELSE")
+            {
+                match("ELSE");
+                stmt_seq();
+            }
+        match("END");
         return null;
     }
    static public String repeat_stmt()
     {
+        
         return null;
     }
    static public String assign_stmt()
