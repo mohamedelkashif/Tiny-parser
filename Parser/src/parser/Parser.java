@@ -148,7 +148,12 @@ public class Parser {
     }
    static public String simple_exp()
     {
-        
+        term();
+        while((token == "+") || (token == "-"))
+        {
+            match(token);
+            term();
+        }
         return null;
     }
     public static void main(String[] args) {
