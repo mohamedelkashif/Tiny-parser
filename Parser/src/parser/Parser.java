@@ -111,18 +111,44 @@ public class Parser {
     }
     static public String exp()
     {
+        simple_exp();
+        if((token == "<")||(token == "="))
+        {
+            simple_exp();
+        }
         return null;
     }
    static public String term()
     {
+        factor();
+        while((token == "*")||(token == "/"))
+        {
+            match(token);
+            factor();
+        }
         return null;
     }    
    static public String factor()
     {
+        switch(token)
+        {
+            case "NUM" : match("NUM");break;
+            case "ID": match("ID");break;
+            case "(" : 
+                match("(");
+                exp();
+                match(")");
+                break;
+            default:
+                System.out.println("Unexpected token");
+                //token=gettoken();
+                break;
+        }
         return null;
     }
    static public String simple_exp()
     {
+        
         return null;
     }
     public static void main(String[] args) {
