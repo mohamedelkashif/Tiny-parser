@@ -99,10 +99,14 @@ public class Parser {
     }
    static public String read_stmt()
     {
+        match("read");
+        match("identifier");
         return null;
     }
    static public String write_stmt()
     {
+        match("write");
+        exp();
         return null;
     }
     static public String exp()
