@@ -1,2 +1,3 @@
 read identifier
-,gl;df;l
+if number < number
+repeat
