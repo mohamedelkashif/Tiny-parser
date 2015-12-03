@@ -1,3 +1,6 @@
-read identifier
-if number < number
+if number < identifier then
+read identifier else
 repeat
+identifier := number
+until identifier = number
+write identifier

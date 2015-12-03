@@ -39,12 +39,15 @@ public class Parser {
          stmt();
          System.out.println(splitted.get(counter));
         
-       while((!splitted.get(counter).equals("else"))&&(!splitted.get(counter).equals("end"))&&(!splitted.get(counter).equals("until")))
-        // while(!splitted.get(counter).equals(";"))
+      //while((splitted.r)(!splitted.get(counter).equals("else"))&&(!splitted.get(counter).equals("end"))&&(!splitted.get(counter).equals("until")))
+         while(!splitted.get(counter).equals("else"))
         {
             match(";");
             stmt();
         }
+         match(";");
+         stmt();
+         
         
     }
 
@@ -87,6 +90,7 @@ public class Parser {
         else if(splitted.get(counter).equals("repeat"))
         {
             repeat_stmt();
+           
         }
         else if(splitted.get(counter).equals("identifier"))
         {
@@ -109,7 +113,7 @@ public class Parser {
         match("if");
         exp();
         match("then");
-        stmt_seq();
+        //stmt_seq();
         if(splitted.get(counter).equals("else"))
             {
                 match("else");
@@ -124,6 +128,7 @@ public class Parser {
         stmt_seq();
         match("until");
         exp();
+        System.out.println("repeat statement found");
         
     }
    static public void assign_stmt()
@@ -151,6 +156,7 @@ public class Parser {
         simple_exp();
         if((splitted.get(counter).equals("<"))||(splitted.get(counter).equals("=")))
         {
+            match(splitted.get(counter));
             simple_exp();
         }
         
@@ -167,20 +173,37 @@ public class Parser {
     }    
    static public void factor()
     {
-        switch(splitted.get(counter))
+//        switch(splitted.get(counter))
+//        {
+//            
+//////            case "(" : 
+//////                match("(");
+//////                exp();
+//////                match(")");
+//////                break;
+//////            default:
+//////                System.out.println("Unexpected token");
+//////                //token=gettoken();
+//////                break;
+//            
+//        }
+        if(splitted.get(counter).equals("("))
         {
-            case "number" : match("number");break;
-            case "identifier": match("identifier");break;
-            case "(" : 
-                match("(");
-                exp();
-                match(")");
-                break;
-            default:
-                System.out.println("Unexpected token");
-                //token=gettoken();
-                break;
+            match("(");
+            exp();
+            match(")");
         }
+        else if(splitted.get(counter).equals("number"))
+        {
+            match("number");
+        }
+        else if(splitted.get(counter).equals("identifier"))
+        {
+            match("identifier");
+                    
+        }
+        else
+            System.out.println("error");
         
     }
    static public void simple_exp()
