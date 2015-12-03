@@ -1,1 +1,9 @@
-jhfjk
+read statement found
+if statement found
+Assign statement found
+Assign statement found
+Assign statement found
+repeat statement found
+write statement found
+read statement found
+Program found

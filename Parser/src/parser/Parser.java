@@ -35,6 +35,9 @@ public class Parser {
      public static ArrayList<String> splitted =new ArrayList<String>();
      public static int counter = 0;
      static FileReader fileReader;
+     //static FileWriter fw;
+    // static BufferedWriter bw;
+     static PrintWriter output;
   
    static public void stmt_seq()
     {
@@ -43,7 +46,7 @@ public class Parser {
         
       //while((splitted.r)(!splitted.get(counter).equals("else"))&&(!splitted.get(counter).equals("end"))&&(!splitted.get(counter).equals("until")))
          while((!splitted.get(counter).equals(EOF))&&(!splitted.get(counter).equals("else"))&&(!splitted.get(counter).equals("end"))&&(!splitted.get(counter).equals("until")))
-         //while()
+         //while(!splitted.get(counter).equals(null))
         {
              
             match(";");
@@ -125,6 +128,8 @@ public class Parser {
             }
         match("end");
         System.out.println("if statement found");
+        output.println("if statement found");
+       // output.close();
     }
    static public void repeat_stmt()
     {
@@ -133,6 +138,8 @@ public class Parser {
         match("until");
         exp();
         System.out.println("repeat statement found");
+        output.println("repeat statement found");
+        //output.close();
         
     }
    static public void assign_stmt()
@@ -141,12 +148,17 @@ public class Parser {
         match(":=");
         exp();
         System.out.println("Assign statement found");
+        output.println("Assign statement found");
+        //output.close();
     }
  static public void read_stmt()
     {
         match("read");
         match("identifier");
         System.out.println("read statement found");
+        output.println("read statement found");
+       // output.close();
+       
         
     }
    static public void write_stmt()
@@ -154,6 +166,8 @@ public class Parser {
         match("write");
         exp();
         System.out.println("write statement found");
+        output.println("write statement found");
+        //output.close();
     }
     static void  exp()
     {
@@ -277,20 +291,26 @@ public class Parser {
 			e.printStackTrace();
 		}
            // stmt_seq();
-            try{
-            File files = new File("parser_output.txt");
-            if (!files.exists()) {
-				files.createNewFile();
-			}
-            FileWriter fw = new FileWriter(files.getAbsoluteFile());
-			BufferedWriter bw = new BufferedWriter(fw);
-			bw.write("jhfjk");
-			bw.close();
-                        } catch (IOException e) {
-			e.printStackTrace();
-		}
+//            try{
+//            File files = new File("parser_output.txt");
+//            if (!files.exists()) {
+//				files.createNewFile();
+//			}
+//             fw = new FileWriter(files.getAbsoluteFile());
+//			 bw = new BufferedWriter(fw);
+//			bw.write("jhfjk");
+//                        
+//			bw.close();
+//                        } catch (IOException e) {
+//			e.printStackTrace();
+//		}
+           output = new PrintWriter("parser_output.txt");
+            //output.println("fgsdg");
+           // output.close();
             //match(";");
             //match(splitted.get(counter));
             stmt_seq();
-            
+            System.out.println("Program found");
+            output.println("Program found");
+            output.close();
     }}
