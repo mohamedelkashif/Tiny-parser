@@ -21,6 +21,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jdk.nashorn.internal.parser.TokenType;
+import static jdk.nashorn.internal.parser.TokenType.EOF;
 import static jdk.nashorn.internal.parser.TokenType.EQ;
 
 
@@ -33,6 +34,7 @@ public class Parser {
      static String sd;
      public static ArrayList<String> splitted =new ArrayList<String>();
      public static int counter = 0;
+     static FileReader fileReader;
   
    static public void stmt_seq()
     {
@@ -40,13 +42,15 @@ public class Parser {
          System.out.println(splitted.get(counter));
         
       //while((splitted.r)(!splitted.get(counter).equals("else"))&&(!splitted.get(counter).equals("end"))&&(!splitted.get(counter).equals("until")))
-         while(!splitted.get(counter).equals("else"))
+         while((!splitted.get(counter).equals(EOF))&&(!splitted.get(counter).equals("else"))&&(!splitted.get(counter).equals("end"))&&(!splitted.get(counter).equals("until")))
+         //while()
         {
+             
             match(";");
             stmt();
         }
-         match(";");
-         stmt();
+         //match(";");
+         //stmt();
          
         
     }
@@ -134,9 +138,9 @@ public class Parser {
    static public void assign_stmt()
     {
         match("identifier");
-        match("assign");
+        match(":=");
         exp();
-        
+        System.out.println("Assign statement found");
     }
  static public void read_stmt()
     {
@@ -149,7 +153,7 @@ public class Parser {
     {
         match("write");
         exp();
-        
+        System.out.println("write statement found");
     }
     static void  exp()
     {
@@ -247,7 +251,7 @@ public class Parser {
 //                }
             try {
        File file = new File("parser_input.txt");
-       FileReader fileReader = new FileReader(file);
+       fileReader = new FileReader(file);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
                         StringBuffer stringBuffer = new StringBuffer();
 			String line;
