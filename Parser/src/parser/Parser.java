@@ -80,15 +80,7 @@ public class Parser {
   static public void stmt()
     {
         String t = null;
-//        switch(splitted.get(counter))
-//        {
-//            case "if" :if_stmt();break;
-//            case "repeat" : repeat_stmt();break;
-//            case "id" : assign_stmt();break;
-//            case "read" :read_stmt();break;
-//            case "write" : write_stmt();break;
-//            default: System.out.println("Error");
-//        }
+
         if(splitted.get(counter).equals("if"))
         {
             if_stmt();
@@ -191,20 +183,7 @@ public class Parser {
     }    
    static public void factor()
     {
-//        switch(splitted.get(counter))
-//        {
-//            
-//////            case "(" : 
-//////                match("(");
-//////                exp();
-//////                match(")");
-//////                break;
-//////            default:
-//////                System.out.println("Unexpected token");
-//////                //token=gettoken();
-//////                break;
-//            
-//        }
+
         if(splitted.get(counter).equals("("))
         {
             match("(");
@@ -236,33 +215,7 @@ public class Parser {
     }
     public static void main(String[] args) throws IOException {
         
-        //try {
-            //        //input file
-//        //output file
-//        String t;
-//        token = "read identifier";
-//        t=stmt_seq();
-//        if(token=="\n")
-//        {
-//            System.out.println("error");
-//        }
-//        Scanner s = new Scanner(System.in);
-//        token = s.nextLine();
-//        
-//          g();
-//        //System.out.println(parts[1]);
-//        String testString = "ThisIsTest";
-//		char[] stringToCharArray = token.toCharArray();
-// 
-////		for (char output : stringToCharArray) {
-////                    
-////			System.out.println(output);
-////            
-////    }
-//                for (int i=0;i<stringToCharArray.length;i++)
-//                {
-//                    System.out.println(stringToCharArray[i]);
-//                }
+        
             try {
        File file = new File("parser_input.txt");
        fileReader = new FileReader(file);
@@ -305,10 +258,7 @@ public class Parser {
 //			e.printStackTrace();
 //		}
            output = new PrintWriter("parser_output.txt");
-            //output.println("fgsdg");
-           // output.close();
-            //match(";");
-            //match(splitted.get(counter));
+            
             stmt_seq();
             System.out.println("Program found");
             output.println("Program found");
