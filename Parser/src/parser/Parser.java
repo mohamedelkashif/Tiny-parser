@@ -106,6 +106,7 @@ public class Parser {
         else
             System.out.println("Error");
         
+        
     }
    static public void if_stmt()
     {
@@ -201,6 +202,7 @@ public class Parser {
         }
         else
             System.out.println("error");
+        
         
     }
    static public void simple_exp()
