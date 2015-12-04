@@ -38,6 +38,7 @@ public class Parser {
      //static FileWriter fw;
     // static BufferedWriter bw;
      static PrintWriter output;
+    static int maxcounter;
   
    static public void stmt_seq()
     {
@@ -45,8 +46,8 @@ public class Parser {
          System.out.println(splitted.get(counter));
         
       //while((splitted.r)(!splitted.get(counter).equals("else"))&&(!splitted.get(counter).equals("end"))&&(!splitted.get(counter).equals("until")))
-         while((!splitted.get(counter).equals(EOF))&&(!splitted.get(counter).equals("else"))&&(!splitted.get(counter).equals("end"))&&(!splitted.get(counter).equals("until")))
-         //while(!splitted.get(counter).equals(null))
+        // while((!splitted.get(counter).equals(EOF))&&(!splitted.get(counter).equals("else"))&&(!splitted.get(counter).equals("end"))&&(!splitted.get(counter).equals("until")))
+         while(splitted.get(counter).equals(";"))
         {
              
             match(";");
@@ -64,15 +65,18 @@ public class Parser {
     
     public  static void match(String expected)
     {
+        
         if(splitted.get(counter).equals(expected))
         {
             System.out.println("matched");
             System.out.println(splitted.get(counter));
             counter++;
             System.out.println(splitted.get(counter));
+            
         }
         else 
             System.out.println("Error");
+        
      }
         
         
@@ -105,6 +109,7 @@ public class Parser {
         }
         else
             System.out.println("Error");
+        //System.exit(1);
         
         
     }
@@ -113,12 +118,14 @@ public class Parser {
         match("if");
         exp();
         match("then");
-        //stmt_seq();
+        stmt_seq();
+        
         if(splitted.get(counter).equals("else"))
             {
                 match("else");
                 stmt_seq();
             }
+        
         match("end");
         System.out.println("if statement found");
         output.println("if statement found");
@@ -234,6 +241,7 @@ public class Parser {
   System.out.println(part);
 }
 			}
+                        maxcounter = splitted.size();
                         //for(String s:splitted)
                         System.out.println(splitted);
                         
