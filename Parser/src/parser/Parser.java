@@ -68,15 +68,27 @@ public class Parser {
         
         if(splitted.get(counter).equals(expected))
         {
+            
             System.out.println("matched");
             System.out.println(splitted.get(counter));
+            if(counter< maxcounter-1)
+            {
             counter++;
             System.out.println(splitted.get(counter));
-            
+            System.out.println(counter);
+//            if(counter==maxcounter-1)
+//            {
+//                System.out.println("exception");
+//            }
+            }
+            else
+                System.out.println("dfv");
         }
-        else 
+        else {
             System.out.println("Error");
-        
+        output.println("match erroryy");
+//System.exit(0);
+        }
      }
         
         
@@ -107,9 +119,11 @@ public class Parser {
         {
             write_stmt();
         }
-        else
+        else{
             System.out.println("Error");
-        //System.exit(1);
+            //counter++;
+        }
+        //
         
         
     }
@@ -207,9 +221,10 @@ public class Parser {
             match("identifier");
                     
         }
-        else
+        else{
             System.out.println("error");
-        
+            counter++;
+        }
         
     }
    static public void simple_exp()
@@ -244,6 +259,7 @@ public class Parser {
                         maxcounter = splitted.size();
                         //for(String s:splitted)
                         System.out.println(splitted);
+                        System.out.println(maxcounter);
                         
                        
 //             

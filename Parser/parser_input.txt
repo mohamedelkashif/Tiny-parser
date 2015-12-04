@@ -6,5 +6,4 @@ identifier := identifier * identifier ;
 identifier := identifier - number ;
 until identifier = number ;
 write identifier
-read identifier ;
 end
