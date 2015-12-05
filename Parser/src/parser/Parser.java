@@ -39,6 +39,12 @@ public class Parser {
     // static BufferedWriter bw;
      static PrintWriter output;
     static int maxcounter;
+    
+    static public void program()
+    {
+        stmt_seq();
+        output.println("Program found");
+    }
   
    static public void stmt_seq()
     {
@@ -86,8 +92,8 @@ public class Parser {
         }
         else {
             System.out.println("Error");
-        output.println("match erroryy");
-//System.exit(0);
+        output.println("match error");
+System.exit(0);
         }
      }
         
@@ -269,24 +275,12 @@ public class Parser {
                         } catch (IOException e) {
 			e.printStackTrace();
 		}
-           // stmt_seq();
-//            try{
-//            File files = new File("parser_output.txt");
-//            if (!files.exists()) {
-//				files.createNewFile();
-//			}
-//             fw = new FileWriter(files.getAbsoluteFile());
-//			 bw = new BufferedWriter(fw);
-//			bw.write("jhfjk");
-//                        
-//			bw.close();
-//                        } catch (IOException e) {
-//			e.printStackTrace();
-//		}
+           
            output = new PrintWriter("parser_output.txt");
             
-            stmt_seq();
+            //stmt_seq();
+            program();
             System.out.println("Program found");
-            output.println("Program found");
+           // output.println("Program found");
             output.close();
     }}
